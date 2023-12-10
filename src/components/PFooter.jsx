@@ -41,5 +41,5 @@ export function PFooter(){
 
 const listItemStyle = {
     border: "none",
-    textAlign :"left" // Add this style to remove the border
+    textAlign :"left" 
   };
