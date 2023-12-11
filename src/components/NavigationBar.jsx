@@ -19,8 +19,8 @@ export function NavigationBar(){
                 <LinkContainer to = '/form'>
                 <Nav.Link>Registration Form</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to = '/client-list'>
-                <Nav.Link>Client List</Nav.Link>
+                <LinkContainer to = '/login'>
+                <Nav.Link>Login</Nav.Link>
                 </LinkContainer>
 
             </Nav>

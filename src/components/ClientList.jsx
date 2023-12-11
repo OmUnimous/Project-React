@@ -23,15 +23,20 @@ export function ClientList() {
   async function populateClientState() {
     try {
       const data = await fetchClients();
-      setClients(data.customers);
+      if (data && data.customers) {
+        setClients(data.customers);
+      } else {
+        console.error("Invalid data received from fetchClients");
+      }
     } catch (error) {
       console.log(error);
     }
   }
-
+  
+  
   const handleClientDelete = async()=>{
     try {
-        await deleteClient(selectedClient);
+        await deleteClient(selectedClient.name);
         populateClientState();
         closeDialogModal();
     } catch (error) {
@@ -72,7 +77,7 @@ export function ClientList() {
                     
                 <Button variant="danger" onClick={() => {
                         openDialogModal();
-                        setSelectedClient(c.name);
+                        setSelectedClient({name: c.name });
                         }}>Delete</Button> 
                 <Button variant="primary" onClick={()=>{
                          navigate(`/edit/${c.name}`)
@@ -89,7 +94,7 @@ export function ClientList() {
             <Modal.Header closeButton>
                 <Modal.Title>Confirmation</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Do ypu really want to delete Client?</Modal.Body>
+            <Modal.Body>Do you really want to delete Client?</Modal.Body>
             <Modal.Footer>
                 <Button variant = "danger" onClick={()=>{
                     handleClientDelete();
